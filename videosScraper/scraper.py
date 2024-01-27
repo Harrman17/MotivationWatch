@@ -6,7 +6,7 @@ from selenium.webdriver import ActionChains
 import pickle
 import time
 import os
-
+# change password and resave cookies make sur enot to push
 webdriver = webdriver.Chrome()
 
 webdriver.get("https://www.instagram.com/hilosophy7/saved/test/18078678736603768/")
@@ -58,11 +58,11 @@ try:
     videosLoaded = WebDriverWait(webdriver, 3).until(
         expected_conditions.element_to_be_clickable((By.XPATH, "//article//a"))
     )
+
     videos = videosLoaded.find_elements(By.XPATH, "//article//a")
+
     for video in videos:
         print(video.get_attribute("href"))
-
-
 
 except Exception as error:
     print("Failed to get href", error)
