@@ -36,12 +36,12 @@ export default function Stopwatch() {
   }
 
   return (
-    <div className='flex flex-col justify-center items-center text-white'>
-      <div className='bg-test flex flex-col'>
-        <h1 className='font-inter text-3xl'>{minutes < 10 ? '0' : ''}{minutes}:{seconds < 10 ? '0' : ''}{seconds}</h1>
-        <div>
-          <button className='font-inter' onClick={reset}>RESET</button>
-          <button onClick={StartStop} className='font-inter'>{isRunning ? 'STOP' : 'START'}</button>
+    <div className='flex justify-center mt-32'>
+      <div className='font-inter text-white'>
+        <h1 className='text-9xl text-center'>{minutes < 10 ? '0' : ''}{minutes}:{seconds < 10 ? '0' : ''}{seconds}</h1>
+        <div className='flex justify-center gap-28 mt-12'>
+          <button className='bg-primary border-accent border-2 h-16 w-48 rounded-2xl text-2xl' onClick={reset}>RESET</button>
+          <button onClick={StartStop} className='bg-accent h-16 w-48 rounded-2xl text-2xl'>{isRunning ? 'STOP' : 'START'}</button>
         </div>
       </div>
     </div>
