@@ -40,8 +40,8 @@ export default function Stopwatch() {
       <div className='font-inter text-white'>
         <h1 className='text-9xl text-center'>{minutes < 10 ? '0' : ''}{minutes}:{seconds < 10 ? '0' : ''}{seconds}</h1>
         <div className='flex justify-center gap-28 mt-12'>
-          <button className='bg-primary border-accent border-2 h-16 w-48 rounded-2xl text-2xl' onClick={reset}>RESET</button>
-          <button onClick={StartStop} className='bg-accent h-16 w-48 rounded-2xl text-2xl'>{isRunning ? 'STOP' : 'START'}</button>
+          <button className='bg-primary border-accent border-2 h-16 w-48 rounded-2xl text-2xl' style={{boxShadow: '9px 7px 3px #1C1D1D'}} onClick={reset}>RESET</button>
+          <button onClick={StartStop} className='bg-accent h-16 w-48 rounded-2xl text-2xl' style={{boxShadow: '9px 7px 3px #1C1D1D'}}>{isRunning ? 'STOP' : 'START'}</button>
         </div>
       </div>
     </div>
