@@ -3,6 +3,7 @@ import React from 'react'
 
 
 export default function Header() {
+
   return (
     <div className='h-20 flex justify-center items-center bg-primary'>
       <h1 className='font-inter italic text-2xl text-accent'>Motivation</h1>
@@ -10,3 +11,7 @@ export default function Header() {
     </div>
   )
 }
+
+
+
+
