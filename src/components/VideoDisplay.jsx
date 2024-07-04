@@ -1,12 +1,12 @@
 import React from 'react'
 
 
-export default function VideoDisplay() {
+export default function VideoDisplay({ videoLink, displayVideo}) {
 
 
   return (
-    <div>
-      <video autoPlay muted loop playsInline src={"https://youtu.be/0Hfb4qtpqlg"} />
+    <div className='video-container flex justify-center items-center'>
+      {displayVideo && <video autoPlay playsInline src={videoLink} className='h-5/6'/>}
     </div>
   )
 }
