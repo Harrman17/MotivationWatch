@@ -19,7 +19,7 @@ export default function Stopwatch() {
 }, [isRunning])
 
   useEffect(() => {
-    if (seconds === 20) {
+    if (seconds === 60) {
       setSeconds(0)
       setMinutes(prevMinute => prevMinute + 1)
     }
