@@ -36,7 +36,7 @@ export default function App() {
         setDisplayVideo(true)
     }
 
-    function motivatetest() {
+    function videoPlayer() {
       setMotivateToggle(!motivateToggle)
     }
 
@@ -54,7 +54,7 @@ export default function App() {
             <Header />
             <Stopwatch />
             <VideoDisplay displayVideo={displayVideo} videoLink={videoLink} onEnded={hashRandomVideo}/>
-            <Motivate motivatetest={motivatetest} displayVideo={displayVideo}/>
+            <Motivate hashRandomVideo={hashRandomVideo} displayVideo={displayVideo} videoPlayer={videoPlayer}/>
         </div>
     )
 }
