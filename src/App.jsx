@@ -51,10 +51,10 @@ export default function App() {
 
     return (
         <div>
-            <Header />
-            <Stopwatch />
-            <VideoDisplay displayVideo={displayVideo} videoLink={videoLink} onEnded={hashRandomVideo}/>
-            <Motivate hashRandomVideo={hashRandomVideo} displayVideo={displayVideo} videoPlayer={videoPlayer}/>
+            <Header displayVideo={displayVideo} />
+            <Stopwatch displayVideo={displayVideo} setMotivateToggle={setMotivateToggle}/>
+            <VideoDisplay displayVideo={displayVideo} videoLink={videoLink} onEnded={hashRandomVideo} />
+            <Motivate hashRandomVideo={hashRandomVideo} displayVideo={displayVideo} videoPlayer={videoPlayer} />
         </div>
     )
 }
