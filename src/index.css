@@ -4,9 +4,6 @@
 @tailwind utilities;
 
 
-body {
-    background-color: #252525;
-}
 
 .font-inter {
     font-family: 'Inter', sans-serif;
