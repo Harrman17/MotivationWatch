@@ -1,7 +1,7 @@
 import React , { useState, useEffect } from 'react'
 
 
-export default function Stopwatch({ displayVideo, setMotivateToggle }) {
+export default function Stopwatch({ displayVideo }) {
 
   const [seconds,setSeconds] = useState(0)
   const [isRunning,setIsRunning] = useState(false)
@@ -33,7 +33,6 @@ export default function Stopwatch({ displayVideo, setMotivateToggle }) {
     setIsRunning(false)
     setMinutes(0)
     setSeconds(0)
-    setMotivateToggle(prevState => !prevState)
   }
 
   return (
