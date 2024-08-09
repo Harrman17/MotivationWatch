@@ -36,7 +36,7 @@ export default function Stopwatch({ displayVideo }) {
   }
 
   return (
-    <div className='flex justify-center items-center mt-32 lg:mt-[12%] '>
+    <div className='flex justify-center items-center mt-32 lg:mt-[12%]'>
       <div className='font-inter text-white'>
         <h1 className="text-9xl text-center">{minutes < 10 ? '0' : ''}{minutes}:{seconds < 10 ? '0' : ''}{seconds}</h1>
         <div className='flex justify-center gap-28 mt-12'>
