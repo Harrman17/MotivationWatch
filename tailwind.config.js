@@ -6,7 +6,7 @@ module.exports = {
 ],
   theme: {
     screens: {
-      'lg': '1920px'
+      'lg': '1500px'
     },
     colors: {
       'primary': '#252525',
