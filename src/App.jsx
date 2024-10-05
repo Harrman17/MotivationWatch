@@ -18,7 +18,6 @@ export default function App() {
       }
 
       function hashRandomVideo() {
-        console.log("called")
         let randomIndex = getRandomIndex()
 
         while (map.has(randomIndex)) { // if the map already has the index, call a new one
