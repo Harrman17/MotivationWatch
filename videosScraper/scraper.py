@@ -45,14 +45,16 @@ webdriver.refresh()
 # except Exception as error:
 #     print("Failed to enter credentials", error)
 
-try:
-    login = WebDriverWait(webdriver, 5).until(
-        expected_conditions.element_to_be_clickable((By.CSS_SELECTOR, "._acan._acap._acas._aj1-._ap30"))
-    )
-    login.click()
-    print("Login clicked")
-except Exception as error:
-    print("Failed to click login button", error)
+# try:
+#     login = WebDriverWait(webdriver, 5).until(
+#         expected_conditions.element_to_be_clickable((By.CSS_SELECTOR, "._acan._acap._acas._aj1-._ap30"))
+#     )
+#     login.click()
+#     print("Login clicked")
+# except Exception as error:
+#     print("Failed to click login button", error)
+
+videoLinks = []
 
 try: 
     videosLoaded = WebDriverWait(webdriver, 3).until(
@@ -62,14 +64,14 @@ try:
     videos = videosLoaded.find_elements(By.XPATH, "//article//a")
 
     for video in videos:
-        print(video.get_attribute("href"))
+        videoLinks.append(video.get_attribute("href"))
 
 except Exception as error:
     print("Failed to get href", error)
 
 
-
-time.sleep(200)
+print(videoLinks)
+time.sleep(100)
 
 # Gets cookies
 # cookies = webdriver.get_cookies()
