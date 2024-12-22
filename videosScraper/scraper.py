@@ -6,10 +6,14 @@ from selenium.webdriver import ActionChains
 import pickle
 import time
 import os
+import instaloader
+import boto3
+from botocore.exceptions import ClientError
+
 # change password and resave cookies make sur enot to push
 webdriver = webdriver.Chrome()
 
-webdriver.get("https://www.instagram.com/hilosophy7/saved/test/18078678736603768/")
+webdriver.get("https://www.instagram.com/hilosophy7/saved/test1/18035250464521842/")
 
 with open('cookies.pkl', 'rb') as file:
     cookies = pickle.load(file)
@@ -71,10 +75,49 @@ except Exception as error:
 
 
 print(videoLinks)
-time.sleep(100)
+time.sleep(10)
 
 # Gets cookies
 # cookies = webdriver.get_cookies()
 # with open("cookies.pkl", "wb") as file:
 #     pickle.dump(cookies, file)
 #     print("Cookies saved")
+
+
+loader = instaloader.Instaloader()
+
+try:
+    for link in videoLinks:
+        shortcode = link.split("/")[-2]
+
+        post = instaloader.Post.from_shortcode(loader.context, shortcode)
+
+        loader.download_post(post, target="videos")
+        print("Downloaded")
+except Exception as error:
+    print("Download error: ", error)
+
+
+s3_client = boto3.client("s3")
+bucket = "motivationwatchv3"
+
+for file in os.listdir("videos"):
+    file_path = os.path.join("videos", file) 
+    print(f"File path: {file_path}")
+
+    if not file.endswith(".mp4"):
+        try:
+            os.remove(file_path)
+            print(f"Successfully deleted {file_path}")
+        except Exception as error:
+            print(f"Error deleting file: {file_path} with error: ", error)
+
+
+for file in os.listdir("videos"):
+    file_path = os.path.join("videos", file)
+    try:
+        s3_client.upload_file(file_path, bucket, file)
+        print(f"{file} successfully uploaded to s3")
+    except ClientError as error:
+        print(f"Error uploading {file} to s3 with error: ", error)
+    
