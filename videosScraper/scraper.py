@@ -115,9 +115,24 @@ for file in os.listdir("videos"):
 
 for file in os.listdir("videos"):
     file_path = os.path.join("videos", file)
+
     try:
-        s3_client.upload_file(file_path, bucket, file)
-        print(f"{file} successfully uploaded to s3")
+        s3_client.head_object(Bucket=bucket, Key=file)
+        print(f"{file} already exists in s3")
+        os.remove(file_path)
     except ClientError as error:
-        print(f"Error uploading {file} to s3 with error: ", error)
+        if error.response["Error"]["Code"] == "404":
+            try:
+                s3_client.upload_file(file_path, bucket, file)
+                print(f"{file} successfully uploaded to s3")
+                os.remove(file_path)
+            except ClientError as error:
+                print(f"Error uploading {file} to s3 with error: ", error)
+
+try:
+    os.rmdir("videos")
+    print("Videos folder deleted")
+except Exception as error:
+    print("Error deleting videos folder: ", error)
+
     
