@@ -9,11 +9,12 @@ import os
 import instaloader
 import boto3
 from botocore.exceptions import ClientError
+import json
 
 # change password and resave cookies make sur enot to push
 webdriver = webdriver.Chrome()
 
-webdriver.get("https://www.instagram.com/hilosophy7/saved/test1/18035250464521842/")
+webdriver.get("https://www.instagram.com/hilosophy7/saved/all-posts/")
 
 with open('cookies.pkl', 'rb') as file:
     cookies = pickle.load(file)
@@ -134,5 +135,17 @@ try:
     print("Videos folder deleted")
 except Exception as error:
     print("Error deleting videos folder: ", error)
+
+
+response = s3_client.list_objects_v2(Bucket=bucket)
+video_links = []
+
+for video in response["Contents"]:
+    video_key = video["Key"]
+    video_url = f"https://{bucket}.s3.amazonaws.com/{video_key}"
+    video_links.append(video_url)
+
+with open("VideoLinks.json", "w") as json_file:
+    json.dump(video_links, json_file, indent=4)
 
     
