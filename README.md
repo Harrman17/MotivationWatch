@@ -1,5 +1,5 @@
-MotivationWatch V2 (https://motivationwatchv2.netlify.app/)<br />
--- Currently building V3 --
+MotivationWatch V2 (https://motivationwatchv2.netlify.app/)
+-- currently building V3 --
 
 -- feel free to contact me if you want your content taken down or would like me to add anything --
 
