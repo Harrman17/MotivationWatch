@@ -4,7 +4,7 @@ import Stopwatch from './components/Stopwatch'
 import Header from './components/Header'
 import VideoDisplay from './components/VideoDisplay'
 import Motivate from './components/Motivate'
-import VideoLinksFile from './VideoLinks.json'
+import VideoLinksFile from '../videosScraper/VideoLinks.json'
 
 export default function App() {    
     
