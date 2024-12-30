@@ -23,5 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-./videosScraper/cookies.pkl
+videosScraper/cookies.pkl
 /venv
