@@ -25,39 +25,39 @@ with open('cookies.pkl', 'rb') as file:
 webdriver.refresh()
 
 # Accepts cookies
-try:
-    allowcookies = WebDriverWait(webdriver, 20).until(
-        expected_conditions.element_to_be_clickable((By.CSS_SELECTOR, "._a9--._ap36._a9_0"))
-    )
-    allowcookies.click()
-    print("Accepted cookies")
+# try:
+#     allowcookies = WebDriverWait(webdriver, 20).until(
+#         expected_conditions.element_to_be_clickable((By.CSS_SELECTOR, "._a9--._ap36._a9_0"))
+#     )
+#     allowcookies.click()
+#     print("Accepted cookies")
 
-except Exception as error:
-    print("Failed to accept cookies", error)
+# except Exception as error:
+#     print("Failed to accept cookies", error)
 
-try:
-    inputusername = WebDriverWait(webdriver, 20).until(
-        expected_conditions.element_to_be_clickable((By.NAME, "username"))
-    )
-    inputusername.send_keys("hilosophy7")
-    print("Username entered")
+# try:
+#     inputusername = WebDriverWait(webdriver, 20).until(
+#         expected_conditions.element_to_be_clickable((By.NAME, "username"))
+#     )
+#     inputusername.send_keys("hilosophy7")
+#     print("Username entered")
 
-    inputpassword = WebDriverWait(webdriver, 20).until(
-        expected_conditions.element_to_be_clickable((By.NAME, "password"))
-    )
-    inputpassword.send_keys(os.getenv("PASSWORD"))
-    print("Password entered")
-except Exception as error:
-    print("Failed to enter credentials", error)
+#     inputpassword = WebDriverWait(webdriver, 20).until(
+#         expected_conditions.element_to_be_clickable((By.NAME, "password"))
+#     )
+#     inputpassword.send_keys(os.getenv("PASSWORD"))
+#     print("Password entered")
+# except Exception as error:
+#     print("Failed to enter credentials", error)
 
-try:
-    login = WebDriverWait(webdriver, 5).until(
-        expected_conditions.element_to_be_clickable((By.CSS_SELECTOR, "._acan._acap._acas._aj1-._ap30"))
-    )
-    login.click()
-    print("Login clicked")
-except Exception as error:
-    print("Failed to click login button", error)
+# try:
+#     login = WebDriverWait(webdriver, 5).until(
+#         expected_conditions.element_to_be_clickable((By.CSS_SELECTOR, "._acan._acap._acas._aj1-._ap30"))
+#     )
+#     login.click()
+#     print("Login clicked")
+# except Exception as error:
+#     print("Failed to click login button", error)
 
 videoLinks = []
 

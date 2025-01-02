@@ -18,3 +18,13 @@
     z-index: -1;
     overflow: hidden;
 }
+
+.info-titles {
+    font-weight: 700;
+    font-size: x-large;
+    text-align: center;
+}
+
+.info-paragraphs {
+    text-align: center;
+}

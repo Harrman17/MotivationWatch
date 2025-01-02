@@ -57,7 +57,7 @@ export default function App() {
           <Routes>
             <Route path='/' element={
             <>
-              <Header displayVideo={displayVideo}/>
+              <Header displayVideo={displayVideo} displayInfoIcon={true}/>
               <Stopwatch displayVideo={displayVideo} motivateToggle={motivateToggle} setMotivateToggle={setMotivateToggle}/> 
               <VideoDisplay displayVideo={displayVideo} videoLink={videoLink} onEnded={hashRandomVideo}/> 
               <Motivate hashRandomVideo={hashRandomVideo} displayVideo={displayVideo} videoPlayer={videoPlayer}/>
@@ -65,7 +65,7 @@ export default function App() {
             }/>
             <Route path='Info' element={
               <>
-                <Header />
+                <Header displayInfoIcon={false}/>
                 <Info /> 
               </> 
             }/>
