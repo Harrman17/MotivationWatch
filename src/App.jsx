@@ -4,6 +4,7 @@ import Stopwatch from './components/Stopwatch'
 import Header from './components/Header'
 import VideoDisplay from './components/VideoDisplay'
 import Motivate from './components/Motivate'
+import Info from './components/Info'
 import VideoLinksFile from '../videosScraper/VideoLinks.json'
 import { Routes, Route } from 'react-router-dom'
 
@@ -62,11 +63,12 @@ export default function App() {
               <Motivate hashRandomVideo={hashRandomVideo} displayVideo={displayVideo} videoPlayer={videoPlayer}/>
             </>
             }/>
-
-            {/* <Header displayVideo={displayVideo} />
-            <Stopwatch displayVideo={displayVideo} motivateToggle={motivateToggle} setMotivateToggle={setMotivateToggle}/>
-            <VideoDisplay displayVideo={displayVideo} videoLink={videoLink} onEnded={hashRandomVideo} />
-            <Motivate hashRandomVideo={hashRandomVideo} displayVideo={displayVideo} videoPlayer={videoPlayer} /> */}
+            <Route path='Info' element={
+              <>
+                <Header />
+                <Info /> 
+              </> 
+            }/>
           </Routes>  
         </div>
     )
