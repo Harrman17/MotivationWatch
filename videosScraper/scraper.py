@@ -79,10 +79,10 @@ print(videoLinks)
 time.sleep(10)
 
 # Gets cookies
-# cookies = webdriver.get_cookies()
-# with open("cookies.pkl", "wb") as file:
-#     pickle.dump(cookies, file)
-#     print("Cookies saved")
+cookies = webdriver.get_cookies()
+with open("cookies.pkl", "wb") as file:
+    pickle.dump(cookies, file)
+    print("Cookies saved")
 
 
 loader = instaloader.Instaloader()
