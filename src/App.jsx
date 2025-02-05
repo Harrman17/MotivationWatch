@@ -5,7 +5,7 @@ import Header from './components/Header'
 import VideoDisplay from './components/VideoDisplay'
 import Motivate from './components/Motivate'
 import Info from './components/Info'
-import VideoLinksFile from '../videosScraper/VideoLinks.json'
+import VideoLinksFile from '/VideoLinks.json'
 import { Routes, Route } from 'react-router-dom'
 
 
@@ -21,7 +21,7 @@ export default function App() {
       }
 
       function hashRandomVideo() {
-        console.log("called")
+        console.log("Videos Count:",videoLink.length)
         let randomIndex = getRandomIndex()
 
         while (map.has(randomIndex)) { // if the map already has the index, call a new one
