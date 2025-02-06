@@ -24,19 +24,27 @@ export default function App() {
         console.log("Videos Count:",videoLink.length)
         let randomIndex = getRandomIndex()
 
-        while (map.has(randomIndex)) { // if the map already has the index, call a new one
+        while (map.has(randomIndex)) { // if the map already has the index, call a new one so that we don't repeat videos
           randomIndex = getRandomIndex()
         }
     
          
         setMap(prevMap => { // creates a new map and sets it with the new index
           const newMap = new Map(prevMap) // with the old map inside so we don't lose the previous indexes
-          newMap.set(randomIndex) // sets the newly generated index
+          newMap.set(randomIndex, true) // sets the newly generated index
+          console.log(map)
           return newMap
         })
 
+        console.log(VideoLinksFile.length - 1)
+
+
         setVideoLink(VideoLinksFile[randomIndex])
         setDisplayVideo(true)
+
+        if (map.size == VideoLinksFile.length - 1) {
+          setMap(new Map())
+        }
     }
 
     function videoPlayer() {
