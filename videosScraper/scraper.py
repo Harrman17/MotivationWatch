@@ -62,7 +62,7 @@ webdriver.refresh()
 videoLinks = []
 
 try: 
-    videosLoaded = WebDriverWait(webdriver, 3).until(
+    videosLoaded = WebDriverWait(webdriver, 5).until(
         expected_conditions.element_to_be_clickable((By.XPATH, "//article//a"))
     )
 
@@ -79,10 +79,10 @@ print(videoLinks)
 time.sleep(10)
 
 # Gets cookies
-cookies = webdriver.get_cookies()
-with open("cookies.pkl", "wb") as file:
-    pickle.dump(cookies, file)
-    print("Cookies saved")
+# cookies = webdriver.get_cookies()
+# with open("cookies.pkl", "wb") as file:
+#     pickle.dump(cookies, file)
+#     print("Cookies saved")
 
 
 loader = instaloader.Instaloader()
