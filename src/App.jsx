@@ -36,9 +36,6 @@ export default function App() {
           return newMap
         })
 
-        console.log(VideoLinksFile.length - 1)
-
-
         setVideoLink(VideoLinksFile[randomIndex])
         setDisplayVideo(true)
 
