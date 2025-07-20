@@ -37,12 +37,30 @@ export default function Stopwatch({ displayVideo }) {
     setIsRunning(!isRunning)
   }
 
+  useEffect(() => {
+    const keyDown = (e) => {
+      if (e.code == "Space") {
+        e.preventDefault()
+        StartStop()
+      }
+    }
+  
+    window.addEventListener('keydown', keyDown)
+
+    return () => {
+      window.removeEventListener('keydown', keyDown)
+    }
+  }, [StartStop])
+
+
   const reset = () => {
     setIsRunning(false)
     setMinutes(0)
     setSeconds(0)
     setHours(0)
   }
+
+
 
   return (
     <div className='flex justify-center items-center mt-32 sm:mt-[10%]'>
