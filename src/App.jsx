@@ -16,6 +16,8 @@ export default function App() {
       const [map, setMap] = useState(new Map())
       const [motivateToggle, setMotivateToggle] = useState(false)
 
+      const [isRunning,setIsRunning] = useState(false) // for stopwatch
+
       function getRandomIndex() {
         return Math.floor(Math.random() * VideoLinksFile.length)
       }
@@ -56,6 +58,22 @@ export default function App() {
       }
     },[motivateToggle])
 
+    const StartStop = () => {
+      setIsRunning(!isRunning)
+    }
+
+    const handleKeyDown = (e) => {
+      if (e.code == 'Space') {
+        e.preventDefault()
+        StartStop()
+        videoPlayer()
+      }
+
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+
 
     return (
         <div>
@@ -63,7 +81,7 @@ export default function App() {
             <Route path='/' element={
             <>
               <Header displayVideo={displayVideo} displayInfoIcon={true}/>
-              <Stopwatch displayVideo={displayVideo} motivateToggle={motivateToggle} setMotivateToggle={setMotivateToggle}/> 
+              <Stopwatch displayVideo={displayVideo} motivateToggle={motivateToggle} setMotivateToggle={setMotivateToggle} StartStop={StartStop} isRunning={isRunning} setIsRunning={setIsRunning}/> 
               <VideoDisplay displayVideo={displayVideo} videoLink={videoLink} onEnded={hashRandomVideo}/> 
               <Motivate hashRandomVideo={hashRandomVideo} displayVideo={displayVideo} videoPlayer={videoPlayer}/>
             </>

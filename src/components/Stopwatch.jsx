@@ -1,15 +1,15 @@
 import React , { useState, useEffect } from 'react'
 
 
-export default function Stopwatch({ displayVideo }) {
+export default function Stopwatch({ displayVideo, StartStop, isRunning, setIsRunning }) {
 
-  const [isRunning,setIsRunning] = useState(false)
   const [seconds,setSeconds] = useState(0)
   const [minutes,setMinutes] = useState(0)
   const [hours,setHours] = useState(0)
 
-  let interval
+  
   useEffect(() => {
+    let interval
     if (isRunning) {
       interval = setInterval(() => {
         setSeconds(prevSeconds => prevSeconds + 1)
@@ -31,26 +31,7 @@ export default function Stopwatch({ displayVideo }) {
       setMinutes(0)
       setHours(prevMinute => prevMinute + 1)
     }
-  }, [seconds])
-
-  const StartStop = () => {
-    setIsRunning(!isRunning)
-  }
-
-  useEffect(() => {
-    const keyDown = (e) => {
-      if (e.code == "Space") {
-        e.preventDefault()
-        StartStop()
-      }
-    }
-  
-    window.addEventListener('keydown', keyDown)
-
-    return () => {
-      window.removeEventListener('keydown', keyDown)
-    }
-  }, [StartStop])
+  }, [minutes])
 
 
   const reset = () => {
