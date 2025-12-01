@@ -298,10 +298,23 @@ for page in pages:
 video_links.sort()  # Sort for consistency
 print(f"Found {len(video_links)} videos in S3 bucket")
 
-# Save to VideoLinks.json
+# Save to VideoLinks.json in current directory
 json_path = "VideoLinks.json"
 with open(json_path, "w") as json_file:
     json.dump(video_links, json_file, indent=4)
+print(f"✓ VideoLinks.json saved to {json_path}")
+
+# Also save to public folder for Netlify deployment
+public_json_path = "public/VideoLinks.json"
+try:
+    # Create public directory if it doesn't exist
+    if not os.path.exists("public"):
+        os.makedirs("public")
+    with open(public_json_path, "w") as json_file:
+        json.dump(video_links, json_file, indent=4)
+    print(f"✓ VideoLinks.json also saved to {public_json_path} for deployment")
+except Exception as e:
+    print(f"Warning: Could not save to public folder: {e}")
 
 print(f"✓ VideoLinks.json generated successfully with {len(video_links)} video links")
 
