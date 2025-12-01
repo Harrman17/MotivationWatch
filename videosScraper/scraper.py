@@ -202,14 +202,7 @@ import json
 
 s3_client = boto3.client("s3")
 bucket = "motivationwatchv3.1"
-
-# Get bucket region for proper URL generation
-try:
-    bucket_location = s3_client.get_bucket_location(Bucket=bucket)
-    bucket_region = bucket_location.get('LocationConstraint') or 'us-east-1'  # Default to us-east-1 if None
-except Exception as e:
-    print(f"Warning: Could not get bucket region, defaulting to us-east-1: {e}")
-    bucket_region = 'us-east-1'
+bucket_region = "eu-west-2"  # Hardcoded region
 
 # Create videos directory if it doesn't exist
 if not os.path.exists("videos"):
@@ -296,12 +289,11 @@ for page in pages:
             video_key = video["Key"]
             # Only include .mp4 files
             if video_key.endswith(".mp4"):
-                # Use regional endpoint with path-style URL to avoid SSL certificate issues with bucket names containing dots
-                if bucket_region == 'us-east-1':
-                    video_url = f"https://s3.amazonaws.com/{bucket}/{video_key}"
-                else:
-                    video_url = f"https://s3.{bucket_region}.amazonaws.com/{bucket}/{video_key}"
+                # Use path-style URL to avoid SSL certificate issues with bucket names containing dots
+                video_url = f"https://s3.{bucket_region}.amazonaws.com/{bucket}/{video_key}"
                 video_links.append(video_url)
+                if len(video_links) <= 3:  # Print first 3 URLs for verification
+                    print(f"Sample URL: {video_url}")
 
 video_links.sort()  # Sort for consistency
 print(f"Found {len(video_links)} videos in S3 bucket")
