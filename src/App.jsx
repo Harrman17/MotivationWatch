@@ -5,7 +5,6 @@ import Header from './components/Header'
 import VideoDisplay from './components/VideoDisplay'
 import Motivate from './components/Motivate'
 import Info from './components/Info'
-import VideoLinksFile from '/VideoLinks.json'
 import { Routes, Route } from 'react-router-dom'
 
 
@@ -15,15 +14,43 @@ export default function App() {
       const [videoLink, setVideoLink] = useState("")
       const [map, setMap] = useState(new Map())
       const [motivateToggle, setMotivateToggle] = useState(false)
+      const [videoLinksFile, setVideoLinksFile] = useState([])
+      const [videoLinksLoaded, setVideoLinksLoaded] = useState(false)
 
       const [isRunning,setIsRunning] = useState(false) // for stopwatch
 
+      // Fetch VideoLinks.json from public folder
+      useEffect(() => {
+        fetch('/VideoLinks.json')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Failed to load video links')
+            }
+            return response.json()
+          })
+          .then(data => {
+            setVideoLinksFile(data)
+            setVideoLinksLoaded(true)
+            console.log(`Loaded ${data.length} video links`)
+          })
+          .catch(error => {
+            console.error('Error loading video links:', error)
+            setVideoLinksLoaded(true) // Set to true even on error to prevent infinite loading
+          })
+      }, [])
+
       function getRandomIndex() {
-        return Math.floor(Math.random() * VideoLinksFile.length)
+        if (videoLinksFile.length === 0) return 0
+        return Math.floor(Math.random() * videoLinksFile.length)
       }
 
       function hashRandomVideo() {
-        console.log("Videos Count:",videoLink.length)
+        if (!videoLinksLoaded || videoLinksFile.length === 0) {
+          console.log("Video links not loaded yet")
+          return
+        }
+
+        console.log("Videos Count:", videoLinksFile.length)
         let randomIndex = getRandomIndex()
 
         while (map.has(randomIndex)) { // if the map already has the index, call a new one so that we don't repeat videos
@@ -38,10 +65,10 @@ export default function App() {
           return newMap
         })
 
-        setVideoLink(VideoLinksFile[randomIndex])
+        setVideoLink(videoLinksFile[randomIndex])
         setDisplayVideo(true)
 
-        if (map.size == VideoLinksFile.length - 1) {
+        if (map.size == videoLinksFile.length - 1) {
           setMap(new Map())
         }
     }
