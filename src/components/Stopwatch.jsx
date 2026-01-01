@@ -44,7 +44,7 @@ export default function Stopwatch({ displayVideo, StartStop, isRunning, setIsRun
 
 
   return (
-    <div className='flex justify-center items-center mt-32 sm:mt-[10%]'>
+    <div className='flex justify-center items-center mt-[30%] sm:mt-[10%]'>
       <div className='font-inter text-white'>
         <h1 className="text-9xl sm:text-[150px] text-center">{hours < 10 && hours !== 0 ? '0' : ''}{hours > 0 ? hours : ''}{hours !== 0 ? ':' : ''}{minutes < 10 ? '0' : ''}{minutes}:{seconds < 10 ? '0' : ''}{seconds}</h1>
         <div className='flex justify-center gap-12 mt-12 lg:gap-32'>
