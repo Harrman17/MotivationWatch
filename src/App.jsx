@@ -21,7 +21,7 @@ export default function App() {
 
       // Fetch VideoLinks.json from public folder
       useEffect(() => {
-        fetch('/VideoLinks.json')
+        fetch('/videosScraper/VideoLinks.json')
           .then(response => {
             if (!response.ok) {
               throw new Error('Failed to load video links')
