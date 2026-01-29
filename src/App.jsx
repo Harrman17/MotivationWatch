@@ -17,7 +17,7 @@ export default function App() {
       const [videoLinksFile, setVideoLinksFile] = useState([])
       const [videoLinksLoaded, setVideoLinksLoaded] = useState(false)
 
-      const [isRunning,setIsRunning] = useState(false) // for stopwatch
+      const [isRunning, setIsRunning] = useState(false) // for stopwatch
 
       // Fetch VideoLinks.json from public folder
       useEffect(() => {
